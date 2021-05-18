@@ -1,4 +1,4 @@
-FROM postgis/postgis:13-3.1-alpine AS dataloader
+FROM postgis/postgis:11-3.1-alpine AS dataloader
 # Remove daemon initialization from the entrypoint script
 RUN ["sed", "-i", "s/exec \"$@\"/echo \"skipping...\"/", "/usr/local/bin/docker-entrypoint.sh"]
 # Set auth
@@ -13,6 +13,6 @@ COPY roads_mmo.sql /docker-entrypoint-initdb.d/
 # Initialize PG
 RUN ["/usr/local/bin/docker-entrypoint.sh", "postgres"]
 
-FROM postgis/postgis:13-3.1-alpine
+FROM postgis/postgis:11-3.1-alpine
 # Copy the loaded data to the new image
 COPY --from=dataloader /data $PGDATA
