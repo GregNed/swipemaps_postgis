@@ -17,9 +17,9 @@ build:
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile" 
       --destination "$CI_REGISTRY_IMAGE"
 
-test:
-  stage: test
-  image: "$CI_REGISTRY_IMAGE"
-  script:
-    - /usr/local/bin/docker-entrypoint.sh
-    - psql -U postgres -c '\d roads'
+# test:
+#   stage: test
+#   image: "$CI_REGISTRY_IMAGE"
+#   script:
+#     - /usr/local/bin/docker-entrypoint.sh
+#     - psql -U postgres -c '\d roads'
