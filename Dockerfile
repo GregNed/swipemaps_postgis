@@ -9,7 +9,7 @@ ENV PGDATA=/data
 # Copy our version of PostGIS installation script (only postgis extension itself)
 COPY init_postgis.sh /docker-entrypoint-initdb.d/10_postgis.sh
 # Copy our dump into a directory of init scripts
-COPY roads_mmo.sql /docker-entrypoint-initdb.d/
+COPY roads_mmo.sql stops.sql /docker-entrypoint-initdb.d/
 # Initialize PG
 RUN ["/usr/local/bin/docker-entrypoint.sh", "postgres"]
 
