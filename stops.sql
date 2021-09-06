@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.12
+-- Dumped from database version 11.13
 -- Dumped by pg_dump version 13.4 (Ubuntu 13.4-1.pgdg20.04+1)
 
 SET statement_timeout = 0;
@@ -19,23 +19,23 @@ SET row_security = off;
 SET default_tablespace = '';
 
 --
--- Name: public_transport_stops; Type: TABLE; Schema: public; Owner: postgres
+-- Name: public_transport_stop; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.public_transport_stops (
+CREATE TABLE public.public_transport_stop (
     id integer NOT NULL,
     geom public.geometry(Point,4326),
     name text
 );
 
 
-ALTER TABLE public.public_transport_stops OWNER TO postgres;
+ALTER TABLE public.public_transport_stop OWNER TO postgres;
 
 --
--- Name: public_transport_stops_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.public_transport_stops_id_seq
+CREATE SEQUENCE public.public_transport_stop_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -44,27 +44,27 @@ CREATE SEQUENCE public.public_transport_stops_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.public_transport_stops_id_seq OWNER TO postgres;
+ALTER TABLE public.public_transport_stop_id_seq OWNER TO postgres;
 
 --
--- Name: public_transport_stops_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.public_transport_stops_id_seq OWNED BY public.public_transport_stops.id;
-
-
---
--- Name: public_transport_stops id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.public_transport_stops ALTER COLUMN id SET DEFAULT nextval('public.public_transport_stops_id_seq'::regclass);
+ALTER SEQUENCE public.public_transport_stop_id_seq OWNED BY public.public_transport_stop.id;
 
 
 --
--- Data for Name: public_transport_stops; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: public_transport_stop id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-COPY public.public_transport_stops (id, geom, name) FROM stdin;
+ALTER TABLE ONLY public.public_transport_stop ALTER COLUMN id SET DEFAULT nextval('public.public_transport_stop_id_seq'::regclass);
+
+
+--
+-- Data for Name: public_transport_stop; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.public_transport_stop (id, geom, name) FROM stdin;
 3722	0101000020E6100000ADBF882ABA8E42404FB2309F07B54B40	Ярцево
 3723	0101000020E61000003B406AF298904240DC3B17045EB54B40	Лужки
 3724	0101000020E6100000F567DC2789904240D069CCDA5CB54B40	Лужки
@@ -3342,6 +3342,7 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 6574	0101000020E61000006CE43E6209C342404FC37D05E5E84B40	Ул. Приорова
 6575	0101000020E610000076C7BD5447C34240E60D8BAC10E94B40	Ул. Приорова
 6576	0101000020E61000001CF5081CA6C34240C636463E71E94B40	Б. Академическая ул., 15
+9292	0101000020E61000005F54BDC223E74240451F1C81B2E74B40	11-я Парковая ул.
 6948	0101000020E6100000AC3683E8DEC24240A8D6CA9D7CE94B40	Управа района Коптево
 7970	0101000020E610000010E54D761AC44240365FA1E696E84B40	Госпиталь
 7978	0101000020E61000002159022140C34240AF46B0506FE84B40	Ст. МЦД Красный Балтиец
@@ -3426,7 +3427,6 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 8251	0101000020E6100000E1FFF94354E7424016AB611A61E94B40	Уральская ул., 25
 8273	0101000020E6100000D73A69C895E64240C8226ECAECE84B40	Уральская ул.
 8405	0101000020E61000005BC8A7F035E64240245DD83F74E74B40	Метро «Щелковская»
-9292	0101000020E61000005F54BDC223E74240451F1C81B2E74B40	11-я Парковая ул.
 9961	0101000020E6100000D041D98C3AE6424044F3844E1DE94B40	Уральская ул., 19
 212	0101000020E61000001097B94C8FEA4240351367A00DE24B40	Саянская ул.
 214	0101000020E61000009BE93D198CEA424090F10FF8CFE14B40	Ул. Молостовых, 1
@@ -4197,6 +4197,7 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 2494	0101000020E61000004B87B96A3FCE42408AFCE18495C94B40	Ст. МЦД Битца
 2496	0101000020E610000007E821C714CE424097F869FDA9C94B40	Ст. МЦД Битца
 2603	0101000020E61000005BA41EDC7CCC42409DAA52E541CA4B40	Аннино
+6807	0101000020E610000062A2BDD179F642400668F8A2FFD94B40	Метро «Некрасовка»
 2665	0101000020E6100000FDB79A8E63CC42400349337186CA4B40	Метро «Аннино» (южн. вестибюль)
 2667	0101000020E6100000B028FC8479CC4240C7210B6686CA4B40	Метро «Аннино» (южн. вестибюль)
 2912	0101000020E610000016F8ED9878CC4240A5AD21A3C9CA4B40	Метро «Аннино»
@@ -4363,7 +4364,6 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 6383	0101000020E61000005FDEB11252F64240D49044713FDA4B40	2-й кв. Люберецких полей
 6402	0101000020E6100000EA92718CE4F74240F735374BEED74B40	Ст. аэрации
 6425	0101000020E610000048AED5FDE7F642406C91D52966D74B40	Управа района Некрасовка
-6807	0101000020E610000062A2BDD179F642400668F8A2FFD94B40	Метро «Некрасовка»
 6840	0101000020E6100000A1FB8B03DCF542401517890179D74B40	Д\\/к «Заречье»
 6844	0101000020E6100000EAEF63D4CEF64240C377282B82D74B40	1-я Вольская ул., 17
 6856	0101000020E6100000959BEAC10BF74240C0F239DAE5D74B40	Пр. пр. № 83
@@ -7166,6 +7166,7 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 5809	0101000020E61000007AAE296FCBCD4240283ADC589AD84B40	Ст. Крымская
 7515	0101000020E61000005862F1DD5ECD4240BE91ED3AA3D34B40	Чонгарский бульв.
 8060	0101000020E6100000DA693199A6CD4240D2DEA66009D54B40	Метро «Нахимовский просп.»
+788	0101000020E610000055470F3E5BD24240AD0E1EFC94F14B40	Медведково
 8483	0101000020E610000055FBF003C2CD424041BF6BA718D74B40	Пожарно-спасательный колледж
 8493	0101000020E61000006BE3BAEF39CD42407A41D9CED6D64B40	Школа-интернат № 60
 8494	0101000020E61000008E57207AD2CD42405340B9F117D74B40	Пожарно-спасательный колледж
@@ -7326,6 +7327,7 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 10221	0101000020E610000086F9FA73B4B54240692C69DED4C74B40	Школа Летово
 10222	0101000020E6100000A752795CD0B54240E92EA250C3C74B40	Школа Летово
 10223	0101000020E6100000E5ABECD43FB74240DAC2FBC3F9C64B40	Поворот на с\\/х «Воскресенское»
+3804	0101000020E6100000B7808E5E26D242406E0E00EA40F14B40	Ул. Тихомирова
 10224	0101000020E6100000532E64E046B74240973A86CFEFC64B40	Поворот на с\\/х «Воскресенское»
 10469	0101000020E610000096964F5E7DB442406A3D11FEA4C54B40	Поворот на д. Городище
 10470	0101000020E610000044FDCB4192B44240430267A5A0C54B40	Поворот на д. Городище
@@ -7413,8 +7415,7 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 11371	0101000020E6100000D3C7B6EB29A84240D8E3533A37C64B40	Ул. Харлампиева
 11393	0101000020E6100000467A30ADF6D042402E5868EFA5F24B40	Почта
 11398	0101000020E610000022EFEA8F0FD14240027CF995B5F24B40	Почта
-788	0101000020E610000055470F3E5BD24240AD0E1EFC94F14B40	Медведково
-3804	0101000020E6100000B7808E5E26D242406E0E00EA40F14B40	Ул. Тихомирова
+959	0101000020E610000018E260887FA14240B76EF73083D14B40	МВТ
 5504	0101000020E6100000ED63E4B024D142407421989BD6F14B40	Чермянский пр.
 6718	0101000020E61000006D1A80B24ED242409245164063F14B40	Ул. Тихомирова
 6725	0101000020E610000080892E5E62D24240E5CFD813B4F14B40	Кожгалантерейная ф-ка
@@ -8438,7 +8439,6 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 956	0101000020E61000008B1E7C0831A24240DEEAAEAD75D24B40	Правление
 957	0101000020E61000002964000B8DA2424022EBC272F8D24B40	Ст. Внуково
 958	0101000020E6100000107BCBDB64A24240521E2796A5D24B40	Правление
-959	0101000020E610000018E260887FA14240B76EF73083D14B40	МВТ
 960	0101000020E61000002D020A0EFBA14240F1251756FFD04B40	Школа
 961	0101000020E6100000885F98E9EAA14240F0FA692FE4CF4B40	Изварино
 962	0101000020E6100000B6A183AA28A34240525489F453CF4B40	Ликова
@@ -12161,27 +12161,27 @@ COPY public.public_transport_stops (id, geom, name) FROM stdin;
 
 
 --
--- Name: public_transport_stops_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.public_transport_stops_id_seq', 12092, true);
-
-
---
--- Name: public_transport_stops public_transport_stops_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.public_transport_stops
-    ADD CONSTRAINT public_transport_stops_pkey PRIMARY KEY (id);
+SELECT pg_catalog.setval('public.public_transport_stop_id_seq', 12092, true);
 
 
 --
--- Name: public_transport_stops_geom_geom_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: public_transport_stop public_transport_stop_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-CREATE INDEX public_transport_stops_geom_geom_idx ON public.public_transport_stops USING gist (geom);
+ALTER TABLE ONLY public.public_transport_stop
+    ADD CONSTRAINT public_transport_stop_pkey PRIMARY KEY (id);
 
-ALTER TABLE public.public_transport_stops CLUSTER ON public_transport_stops_geom_geom_idx;
+
+--
+-- Name: idx_public_transport_stop_geom; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_public_transport_stop_geom ON public.public_transport_stop USING gist (geom);
+
+ALTER TABLE public.public_transport_stop CLUSTER ON idx_public_transport_stop_geom;
 
 
 --
