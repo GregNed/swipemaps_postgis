@@ -1,9 +1,9 @@
 FROM postgis/postgis:11-3.1-alpine AS dataloader
 # Remove daemon initialization from the entrypoint script
 RUN ["sed", "-i", "s/exec \"$@\"/echo \"skipping...\"/", "/usr/local/bin/docker-entrypoint.sh"]
-# Set auth 
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=postgres
+# Set auth
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
 # Can't use the default /var/lib/postgresql/data since it's a volume (no persistence)
 ENV PGDATA=/data
 # Copy our version of PostGIS installation script (only postgis extension itself)
