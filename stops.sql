@@ -19,7 +19,7 @@ SET row_security = off;
 SET default_tablespace = '';
 
 --
--- Name: public_transport_stop; Type: TABLE; Schema: public; Owner: dango
+-- Name: public_transport_stop; Type: TABLE; Schema: public; Owner: driveandgo
 --
 
 CREATE TABLE public.public_transport_stop (
@@ -29,10 +29,10 @@ CREATE TABLE public.public_transport_stop (
 );
 
 
-ALTER TABLE public.public_transport_stop OWNER TO dango;
+ALTER TABLE public.public_transport_stop OWNER TO driveandgo;
 
 --
--- Name: public_transport_stop_id_seq; Type: SEQUENCE; Schema: public; Owner: dango
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE; Schema: public; Owner: driveandgo
 --
 
 CREATE SEQUENCE public.public_transport_stop_id_seq
@@ -44,24 +44,24 @@ CREATE SEQUENCE public.public_transport_stop_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.public_transport_stop_id_seq OWNER TO dango;
+ALTER TABLE public.public_transport_stop_id_seq OWNER TO driveandgo;
 
 --
--- Name: public_transport_stop_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dango
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: driveandgo
 --
 
 ALTER SEQUENCE public.public_transport_stop_id_seq OWNED BY public.public_transport_stop.id;
 
 
 --
--- Name: public_transport_stop id; Type: DEFAULT; Schema: public; Owner: dango
+-- Name: public_transport_stop id; Type: DEFAULT; Schema: public; Owner: driveandgo
 --
 
 ALTER TABLE ONLY public.public_transport_stop ALTER COLUMN id SET DEFAULT nextval('public.public_transport_stop_id_seq'::regclass);
 
 
 --
--- Data for Name: public_transport_stop; Type: TABLE DATA; Schema: public; Owner: dango
+-- Data for Name: public_transport_stop; Type: TABLE DATA; Schema: public; Owner: driveandgo
 --
 
 COPY public.public_transport_stop (id, name, geom) FROM stdin;
@@ -12161,14 +12161,14 @@ COPY public.public_transport_stop (id, name, geom) FROM stdin;
 
 
 --
--- Name: public_transport_stop_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dango
+-- Name: public_transport_stop_id_seq; Type: SEQUENCE SET; Schema: public; Owner: driveandgo
 --
 
 SELECT pg_catalog.setval('public.public_transport_stop_id_seq', 12092, true);
 
 
 --
--- Name: public_transport_stop public_transport_stop_pkey; Type: CONSTRAINT; Schema: public; Owner: dango
+-- Name: public_transport_stop public_transport_stop_pkey; Type: CONSTRAINT; Schema: public; Owner: driveandgo
 --
 
 ALTER TABLE ONLY public.public_transport_stop
@@ -12176,7 +12176,7 @@ ALTER TABLE ONLY public.public_transport_stop
 
 
 --
--- Name: idx_public_transport_stop_geom; Type: INDEX; Schema: public; Owner: dango
+-- Name: idx_public_transport_stop_geom; Type: INDEX; Schema: public; Owner: driveandgo
 --
 
 CREATE INDEX idx_public_transport_stop_geom ON public.public_transport_stop USING gist (geom);
