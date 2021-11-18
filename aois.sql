@@ -19,7 +19,7 @@ SET row_security = off;
 SET default_tablespace = '';
 
 --
--- Name: aoi; Type: TABLE; Schema: public; Owner: postgres
+-- Name: aoi; Type: TABLE; Schema: public; Owner: dango
 --
 
 CREATE TABLE public.aoi (
@@ -29,10 +29,10 @@ CREATE TABLE public.aoi (
 );
 
 
-ALTER TABLE public.aoi OWNER TO postgres;
+ALTER TABLE public.aoi OWNER TO dango;
 
 --
--- Name: aoi_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: aoi_id_seq; Type: SEQUENCE; Schema: public; Owner: dango
 --
 
 CREATE SEQUENCE public.aoi_id_seq
@@ -44,24 +44,24 @@ CREATE SEQUENCE public.aoi_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.aoi_id_seq OWNER TO postgres;
+ALTER TABLE public.aoi_id_seq OWNER TO dango;
 
 --
--- Name: aoi_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: aoi_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dango
 --
 
 ALTER SEQUENCE public.aoi_id_seq OWNED BY public.aoi.id;
 
 
 --
--- Name: aoi id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: aoi id; Type: DEFAULT; Schema: public; Owner: dango
 --
 
 ALTER TABLE ONLY public.aoi ALTER COLUMN id SET DEFAULT nextval('public.aoi_id_seq'::regclass);
 
 
 --
--- Data for Name: aoi; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: aoi; Type: TABLE DATA; Schema: public; Owner: dango
 --
 
 COPY public.aoi (id, geom, name) FROM stdin;
@@ -72,14 +72,14 @@ COPY public.aoi (id, geom, name) FROM stdin;
 
 
 --
--- Name: aoi_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: aoi_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dango
 --
 
 SELECT pg_catalog.setval('public.aoi_id_seq', 3, true);
 
 
 --
--- Name: aoi aoi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: aoi aoi_pkey; Type: CONSTRAINT; Schema: public; Owner: dango
 --
 
 ALTER TABLE ONLY public.aoi
@@ -87,7 +87,7 @@ ALTER TABLE ONLY public.aoi
 
 
 --
--- Name: idx_aoi_geom; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_aoi_geom; Type: INDEX; Schema: public; Owner: dango
 --
 
 CREATE INDEX idx_aoi_geom ON public.aoi USING gist (geom);
