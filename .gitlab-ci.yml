@@ -3,11 +3,7 @@ build:
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
-  variables:
-    POSTGRES_USER: $POSTGRES_USER
-    POSTGRES_PASSWORD: $POSTGRES_PASSWORD
   script:
-    - echo $POSTGRES_USER && echo $POSTGRES_PASSWORD
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - >
@@ -16,3 +12,5 @@ build:
       --context "$CI_PROJECT_DIR"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile" 
       --destination "$CI_REGISTRY_IMAGE"
+      --build-arg POSTGRES_USER=$POSTGRES_USER
+      --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD
